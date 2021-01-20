@@ -8,7 +8,7 @@ export class AnarchyPostingCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "anarchyposting",
-            description: "Toggles anarchyposting.",
+            description: "Toggles anarchyposting, where lists can go for as long as people like, and be finished at any time.",
             guildID: GUILD_ID,
             options: [
                 {
