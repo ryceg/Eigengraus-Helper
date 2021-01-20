@@ -9,7 +9,7 @@ export class FinishCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "finish",
-            description: "Finishes the list in the channel.",
+            description: "Finishes the list in the channel, and posts the results.",
             guildID: GUILD_ID,
         });
     }
