@@ -6,7 +6,7 @@ export class PointsRate extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "pointsrate",
-            description: "Changes the point rate of a command.",
+            description: "Changes the point rate of a channel.",
             guildID: GUILD_ID,
             options: [
                 {
