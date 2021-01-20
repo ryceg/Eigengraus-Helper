@@ -9,7 +9,7 @@ export class MeCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "stats",
-            description: "Get your contributions",
+            description: "Get the stats of your recent messages and contributions to the hivemind.",
             guildID: GUILD_ID,
         });
     }
