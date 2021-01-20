@@ -13,7 +13,7 @@ export class AddListCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "addlist",
-            description: "Adds a new list.",
+            description: "Adds a new list to the pool of lists for the specified target channel.",
             guildID: GUILD_ID,
             options: [
                 {
