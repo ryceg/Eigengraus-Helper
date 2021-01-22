@@ -12,27 +12,27 @@ const matchRegex = new RegExp("(?<=\#)(.*?)(?=\>)")
 export class AddListCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "addlist",
-            description: "Adds a new list to the pool of lists for the specified target channel.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "admin-only-bounty",
-                    description: "[ADMIN-ONLY] Bounty",
-                    type: CommandOptionType.INTEGER,
-                },
-                {
-                    name: "target",
-                    description: "Channel",
-                    type: CommandOptionType.STRING,
-                },
-                {
-                    name: "list-title",
-                    description: "The title of the list",
-                    type: CommandOptionType.STRING,
-                }
-            ]
-
+          name: "addlist",
+          description:
+            "Adds a new list to the pool of lists for the specified target channel.",
+          guildID: GUILD_ID,
+          options: [
+            {
+              name: "target",
+              description: "Channel",
+              type: CommandOptionType.STRING,
+            },
+            {
+              name: "list-title",
+              description: "The title of the list",
+              type: CommandOptionType.STRING,
+            },
+            {
+              name: "bounty",
+              description: "[ADMIN-ONLY] Bounty (extra points) for the list.",
+              type: CommandOptionType.INTEGER,
+            }
+          ],
         });
     }
     async run(ctx) {
