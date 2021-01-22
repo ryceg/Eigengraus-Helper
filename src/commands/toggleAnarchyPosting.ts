@@ -7,16 +7,17 @@ const { GUILD_ID } = require("../../config.json");
 export class AnarchyPostingCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "anarchyposting",
-            description: "Toggles anarchyposting, where lists can go for as long as people like, and be finished at any time.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "value",
-                    description: "Whether anarchyposting should be on or off",
-                    type: CommandOptionType.BOOLEAN,
-                }
-            ]
+          name: "anarchyposting",
+          description:
+            "[ADMIN-ONLY] Toggles anarchyposting, where lists can go for as long as people like, and be finished at any time.",
+          guildID: GUILD_ID,
+          options: [
+            {
+              name: "value",
+              description: "Whether anarchyposting should be on or off",
+              type: CommandOptionType.BOOLEAN,
+            },
+          ],
         });
     }
     async run(ctx) {

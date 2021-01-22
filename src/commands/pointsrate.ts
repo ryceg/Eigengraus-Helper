@@ -5,21 +5,21 @@ const { GUILD_ID } = require("../../config.json");
 export class PointsRate extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "pointsrate",
-            description: "Changes the point rate of a channel.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "channel",
-                    description: "The channel to change the points rate of",
-                    type: CommandOptionType.CHANNEL,
-                },
-                {
-                    name: "points-rate",
-                    description: "The points rate to set the channel to.",
-                    type: CommandOptionType.INTEGER,
-                }
-            ]
+          name: "pointsrate",
+          description: "[ADMIN-ONLY] Changes the point rate of a channel.",
+          guildID: GUILD_ID,
+          options: [
+            {
+              name: "channel",
+              description: "The channel to change the points rate of",
+              type: CommandOptionType.CHANNEL,
+            },
+            {
+              name: "points-rate",
+              description: "The points rate to set the channel to.",
+              type: CommandOptionType.INTEGER,
+            },
+          ],
         });
     }
 

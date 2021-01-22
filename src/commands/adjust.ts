@@ -8,21 +8,21 @@ const { GUILD_ID } = require("../../config.json");
 export class AnarchyPostingCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "adjust",
-            description: "Changes a member's points.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "user",
-                    description: "The user to change the points of.",
-                    type: CommandOptionType.USER
-                },
-                {
-                    name: "value",
-                    description: "The points to change a member by. Either +X or -X",
-                    type: CommandOptionType.STRING,
-                }
-            ]
+          name: "adjust",
+          description: "[ADMIN-ONLY] Changes a member's points.",
+          guildID: GUILD_ID,
+          options: [
+            {
+              name: "user",
+              description: "The user to change the points of.",
+              type: CommandOptionType.USER,
+            },
+            {
+              name: "value",
+              description: "The points to change a member by. Either +X or -X",
+              type: CommandOptionType.STRING,
+            },
+          ],
         });
     }
     async run(ctx) {

@@ -10,21 +10,21 @@ const { GUILD_ID } = require("../../config.json");
 export class TargeCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "target",
-            description: "Sets the target for a channel.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "channel",
-                    description: "The channel",
-                    type: CommandOptionType.CHANNEL
-                },
-                {
-                    name: "target",
-                    description: "Target of the channel",
-                    type: CommandOptionType.INTEGER
-                }
-            ]
+          name: "target",
+          description: "[ADMIN-ONLY] Sets the target for a channel.",
+          guildID: GUILD_ID,
+          options: [
+            {
+              name: "channel",
+              description: "The channel",
+              type: CommandOptionType.CHANNEL,
+            },
+            {
+              name: "target",
+              description: "Target of the channel",
+              type: CommandOptionType.INTEGER,
+            },
+          ],
         });
     }
 
