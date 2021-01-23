@@ -9,6 +9,11 @@ const { GUILD_ID } = require("../../config.json");
 const regex = new RegExp("<#[0-9]{18}>")
 const matchRegex = new RegExp("(?<=\#)(.*?)(?=\>)")
 
+const bountyCommandName = 'bounty'
+const pendingListChannelName = 'pending-lists'
+const tickEmoji = "✅";
+const crossEmoji = "❌";
+
 export class AddListCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
@@ -40,7 +45,9 @@ export class AddListCommand extends SlashCommand {
         const listTitle: string = ctx.data.data.options.filter(option => option.name == "list-title")[0].value;
 
         const targetTemp: string = ctx.data.data.options.filter(option => option.name == "target")[0].value;
-        const bountyTemp = ctx.data.data.options.filter(option => option.name == "admin-only-bounty");
+        const bountyTemp = ctx.data.data.options.filter(
+          (option) => option.name === bountyCommandName
+        );
         console.log(targetTemp)
         const bounty = bountyTemp[0] ? bountyTemp[0].value : 0;
 
@@ -81,12 +88,12 @@ export class AddListCommand extends SlashCommand {
             const pendingList = new PendingList();
             pendingList.name = list.name;
             pendingList.target = list.target;
-            const message = await (await DiscordUtility.getChannelFromName("pending-lists")).send(pendingList.generateEmbed());
-            await message.react("✅");
-            await message.react("❌");
-            const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === "✅" || reaction.emoji.name === "❌" && DiscordUtility.isAdminId(user.id), {max: 1});
+            const message = await (await DiscordUtility.getChannelFromName(pendingListChannelName)).send(pendingList.generateEmbed());
+            await message.react(tickEmoji);
+            await message.react(crossEmoji);
+            const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === tickEmoji || reaction.emoji.name === crossEmoji && DiscordUtility.isAdminId(user.id), {max: 1});
             collected.forEach(async (reaction) => {
-                if (reaction.emoji.name === "❌") {
+                if (reaction.emoji.name === crossEmoji) {
                     message.delete();
                     return;
                 }

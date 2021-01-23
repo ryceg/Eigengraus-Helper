@@ -7,7 +7,7 @@ const { GUILD_ID } = require("../../config.json");
 export class AutoPostingCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
-          name: "autposting",
+          name: "autoposting",
           description:
             "[ADMIN-ONLY] Toggles autoposting, where the bot automatically posts any available lists when a list is finished.",
           guildID: GUILD_ID,

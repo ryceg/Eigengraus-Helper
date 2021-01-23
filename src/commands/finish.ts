@@ -26,7 +26,7 @@ export class FinishCommand extends SlashCommand {
             await list.finish(result);
         } else {
             console.log("List ")
-            return "List is not finished.";
+            return "The list is not yet finished!";
         }
     }
 }

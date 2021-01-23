@@ -5,6 +5,10 @@ import {DiscordUtility} from "../utility/DiscordUtility";
 import {Settings} from "./Settings";
 import {NewCommand} from "../commands/new";
 import {ListUtility} from "../utility/ListUtility";
+const arraysChannelName = 'arrays';
+const finishedChannelName = "finished";
+// TODO: Globally define tick and cross reaction emoji
+const tickEmoji = "✅";
 
 @Entity()
 export class List {
@@ -69,8 +73,8 @@ export class List {
            await List.updateList(list);
            channel.lastListId = null;
            await Channel.updateChannel(channel);
-           const finishedChannel = await DiscordUtility.getChannelFromName("finished");
-        const arraysChannel = await DiscordUtility.getChannelFromName("arrays");
+           const finishedChannel = await DiscordUtility.getChannelFromName(finishedChannelName);
+           const arraysChannel = await DiscordUtility.getChannelFromName(arraysChannelName);
 
         await finishedChannel.send("A list has been finished!");
         const dChannel = await DiscordUtility.getChannelFromId(channel.id) as TextChannel;
@@ -83,7 +87,7 @@ export class List {
         content += `\`\`\``
         await arraysChannel.send(content);
 
-        await (await dChannel.messages.fetch(list.messageId)).react("✅")
+        await(await dChannel.messages.fetch(list.messageId)).react(tickEmoji);
            if ((await Settings.getSettings()).autoPosting) {
               await ListUtility.newList(channel.id);
            } else {
