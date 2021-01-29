@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+ db:
+  image: postgres
+  container_name: "Eigengrau_psql"
+  restart: always
+  environment:
+   POSTGRES_PASSWORD: 'postgres'
+   POSTGRES_DB: 'eigengrau'
+  volumes:
+   - ~/postgres_data/Eigengrau:/var/lib/postgresql/data
+  ports:
+   - "5864:5432"
