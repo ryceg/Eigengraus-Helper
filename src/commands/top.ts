@@ -9,7 +9,7 @@ export class TopCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "top",
-            description: "Gets the top members and channels of the las 30 days.",
+            description: "Gets the top members and channels of the last 30 days.",
             guildID: GUILD_ID,
         });
     }

@@ -6,6 +6,8 @@ import {Settings} from "./Settings";
 import {NewCommand} from "../commands/new";
 import {ListUtility} from "../utility/ListUtility";
 const {FINISHED_LISTS_CHANNEL, FINISHED_ARRAYS_CHANNEL} = require("../../config.json");
+// TODO: Globally define tick and cross reaction emoji
+const tickEmoji = "✅";
 
 
 @Entity()
@@ -85,7 +87,7 @@ export class List {
         content += `\`\`\``
         await arraysChannel.send(content);
 
-        await (await dChannel.messages.fetch(list.messageId)).react("✅")
+        await(await dChannel.messages.fetch(list.messageId)).react(tickEmoji);
            if ((await Settings.getSettings()).autoPosting) {
               await ListUtility.newList(channel.id);
            } else {

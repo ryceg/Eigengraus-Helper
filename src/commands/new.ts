@@ -11,7 +11,7 @@ export class NewCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "new",
-            description: "If called without an argument, it posts an unfinished list.",
+            description: "Starts a new list. If called without an argument, posts an unfinished list from the pool.",
             guildID: GUILD_ID,
         });
     }

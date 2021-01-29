@@ -17,7 +17,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const CatLoggr = require('cat-loggr');
-const logger = new CatLoggr().setLevel('debug');
+const logger = new CatLoggr().setLevel(process.env.COMMANDS_DEBUG === 'true' ? 'debug' : 'info');
 
 const LIST_REGEX = new RegExp("^[0-9]+\..");
 const LIST_INDEX_REGEX = new RegExp("^(.*)(?=\.)");

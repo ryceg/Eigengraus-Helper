@@ -11,7 +11,7 @@ export class TargetCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "target",
-            description: "Sets the target for a channel.",
+            description: "[ADMIN-ONLY] Sets the target for a channel.",
             guildID: GUILD_ID,
             options: [
                 {
@@ -31,7 +31,6 @@ export class TargetCommand extends SlashCommand {
     }
 
     async run(ctx) {
-        console.log(ctx.data.data.options);
         const channelToChange = ctx.data.data.options.filter(option => option.name == "channel")[0].value;
         const target = ctx.data.data.options.filter(option => option.name == "target")[0].value;
 

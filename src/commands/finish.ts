@@ -9,7 +9,7 @@ export class FinishCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "finish",
-            description: "Finishes the list in the channel.",
+            description: "Finishes the list in the channel, and posts the results.",
             guildID: GUILD_ID,
         });
     }
@@ -26,7 +26,7 @@ export class FinishCommand extends SlashCommand {
             await list.finish(result);
         } else {
             console.log("List ")
-            return "List is not finished.";
+            return "The list is not yet finished!";
         }
     }
 }

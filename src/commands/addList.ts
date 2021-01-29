@@ -8,12 +8,14 @@ const {PENDING_LISTS_CHANNEL} = require("../../config.json");
 const {GUILD_ID} = require("../../config.json");
 const regex = new RegExp("<#[0-9]{18}>")
 const matchRegex = new RegExp("(?<=\#)(.*?)(?=\>)")
+const tickEmoji = "✅";
+const crossEmoji = "❌";
 
 export class AddListCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "addlist",
-            description: "Adds a new list.",
+            description: "Adds a new list to the pool of lists for the specified target channel.",
             guildID: GUILD_ID,
             options: [
                 {
@@ -133,11 +135,11 @@ export class AddListCommand extends SlashCommand {
             pendingList.name = list.name;
             pendingList.target = list.target;
             const message = await (await DiscordUtility.getChannelFromName(PENDING_LISTS_CHANNEL)).send(pendingList.generateEmbed());
-            await message.react("✅");
-            await message.react("❌");
+            await message.react(tickEmoji);
+            await message.react(crossEmoji);
             const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === "✅" || reaction.emoji.name === "❌" && DiscordUtility.isAdminId(user.id), {max: 1});
             collected.forEach(async (reaction) => {
-                if (reaction.emoji.name === "❌") {
+                if (reaction.emoji.name === crossEmoji) {
                     message.delete();
                     return;
                 }
