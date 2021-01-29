@@ -9,7 +9,7 @@ export class AutoPostingCommand extends SlashCommand {
         super(creator, {
           name: "autoposting",
           description:
-            "[ADMIN-ONLY] Toggles autoposting, where the bot automatically posts any available lists when a list is finished.",
+            "[ADMIN-ONLY] Toggles autoposting, automatically posts any available lists when a list is finished.",
           guildID: GUILD_ID,
           options: [
             {

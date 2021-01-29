@@ -53,7 +53,7 @@ const creator = new SlashCreator({
    publicKey: process.env.PUBLIC_KEY,
    token: process.env.TOKEN
 });
-creator.registerCommandsIn(path.join(__dirname, 'commands')).syncCommands();
+creator.registerCommandsIn(path.join(__dirname, 'commands')).syncCommands({deleteCommands: true});
 creator.withServer(new GatewayServer(
     (handler) => client.ws.on(<WSEventType>'INTERACTION_CREATE', handler)
 ));

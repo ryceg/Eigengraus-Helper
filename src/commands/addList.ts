@@ -27,11 +27,13 @@ export class AddListCommand extends SlashCommand {
                             name: "target",
                             description: "Target",
                             type: CommandOptionType.CHANNEL,
+                            required: true
                         },
                         {
                             name: "list-title",
                             description: "The title of the list",
                             type: CommandOptionType.STRING,
+                            required: true
                         },
                         {
                             name: "admin-only-bounty",

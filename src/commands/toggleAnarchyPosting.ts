@@ -9,7 +9,7 @@ export class AnarchyPostingCommand extends SlashCommand {
         super(creator, {
           name: "anarchyposting",
           description:
-            "[ADMIN-ONLY] Toggles anarchyposting, where lists can go for as long as people like, and be finished at any time.",
+            "[ADMIN-ONLY] Toggles anarchyposting, where lists have no limit, and can be finished at any time.",
           guildID: GUILD_ID,
           options: [
             {
