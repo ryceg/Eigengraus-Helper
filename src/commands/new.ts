@@ -15,7 +15,7 @@ export class NewCommand extends SlashCommand {
             guildID: GUILD_ID,
         });
     }
-
+    // TODO: `/new` does not currently use an argument.
     async run(ctx) {
         return await ListUtility.newList(ctx.channelID);
     }

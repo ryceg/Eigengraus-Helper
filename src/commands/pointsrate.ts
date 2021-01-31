@@ -5,6 +5,7 @@ const { GUILD_ID } = require("../../config.json");
 export class PointsRate extends SlashCommand {
     constructor(creator) {
         super(creator, {
+          // TODO: is this meant to be "points-rate?"
           name: "pointsrate",
           description: "[ADMIN-ONLY] Changes the point rate of a channel.",
           guildID: GUILD_ID,
