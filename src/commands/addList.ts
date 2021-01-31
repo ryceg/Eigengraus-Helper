@@ -3,13 +3,11 @@ import {List} from "../entity/List";
 import {Channel} from "../entity/Channel";
 import {DiscordUtility} from "../utility/DiscordUtility";
 import {PendingList} from "../entity/PendingList";
-const {PENDING_LISTS_CHANNEL} = require("../../config.json");
+const {PENDING_LISTS_CHANNEL, TICK_EMOJI, CROSS_EMOJI} = require("../../config.json");
 
 const {GUILD_ID} = require("../../config.json");
 const regex = new RegExp("<#[0-9]{18}>")
 const matchRegex = new RegExp("(?<=\#)(.*?)(?=\>)")
-const tickEmoji = "✅";
-const crossEmoji = "❌";
 
 export class AddListCommand extends SlashCommand {
     constructor(creator) {
@@ -137,11 +135,11 @@ export class AddListCommand extends SlashCommand {
             pendingList.name = list.name;
             pendingList.target = list.target;
             const message = await (await DiscordUtility.getChannelFromName(PENDING_LISTS_CHANNEL)).send(pendingList.generateEmbed());
-            await message.react(tickEmoji);
-            await message.react(crossEmoji);
+            await message.react(TICK_EMOJI);
+            await message.react(CROSS_EMOJI);
             const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === "✅" || reaction.emoji.name === "❌" && DiscordUtility.isAdminId(user.id), {max: 1});
             collected.forEach(async (reaction) => {
-                if (reaction.emoji.name === crossEmoji) {
+                if (reaction.emoji.name === CROSS_EMOJI) {
                     message.delete();
                     return;
                 }

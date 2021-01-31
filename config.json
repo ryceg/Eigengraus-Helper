@@ -4,5 +4,7 @@
   "POINTS_PER_MESSAGE": 1,
   "FINISHED_LISTS_CHANNEL": "finished",
   "FINISHED_ARRAYS_CHANNEL": "arrays",
-  "PENDING_LISTS_CHANNEL": "pending-lists"
+  "PENDING_LISTS_CHANNEL": "pending-lists",
+  "TICK_EMOJI": "✅",
+  "CROSS_EMOJI": "❌"
 }
