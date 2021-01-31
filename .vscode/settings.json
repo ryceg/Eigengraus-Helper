@@ -1,0 +1,10 @@
+{
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "prettier.semi": false,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "twee3LanguageTools.storyformat.current": "sugarcube-2"
+}
