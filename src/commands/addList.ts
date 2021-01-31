@@ -106,9 +106,11 @@ export class AddListCommand extends SlashCommand {
 
 
         if (typeof targetTemp === "string") {
-            if (!regex.test(targetTemp.trim())) {
-                return "Invalid channel; target not a string!.";
-            }
+            // TODO: Not sure what this is intended to do. 
+            // It will always flag on a channel, as there is no whitespace to trip.
+            // if (!regex.test(targetTemp.trim())) {
+            //     return "Invalid channel.";
+            // }
             const target = matchRegex.exec(targetTemp)[0];
             console.log("Target: ", target);
             try {
