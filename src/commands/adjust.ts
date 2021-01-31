@@ -29,12 +29,12 @@ export class AnarchyPostingCommand extends SlashCommand {
         if (!await DiscordUtility.isAdmin(ctx.member.roles))
             return;
         console.log(ctx.data.data.options)
-        const value: string = ctx.data.data.options.filter(option => option.name == "value")[0].value
-        const user: string = ctx.data.data.options.filter(option => option.name == "user")[0].value
+        const value: string = ctx.data.data.options.filter(option => option.name === "value")[0].value
+        const user: string = ctx.data.data.options.filter(option => option.name === "user")[0].value
         if (!["+", "-"].includes(value.charAt(0)))
             return "You're missing a + or - at the beginning of the points";
         const member = await Member.getMember(user);
-        if (value.charAt(0) == "+") {
+        if (value.charAt(0) === "+") {
             member.points += parseInt(value.substr(1));
         } else {
             member.points -= parseInt(value.substr(1));

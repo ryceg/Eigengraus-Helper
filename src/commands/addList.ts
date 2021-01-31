@@ -89,10 +89,10 @@ export class AddListCommand extends SlashCommand {
     async run(ctx) {
         const connection = global.CONNECTION;
         console.log(JSON.stringify(ctx.data.data.options[0]));
-        const listTitle: string = ctx.data.data.options[0].options.filter(option => option.name == "list-title")[0].value;
+        const listTitle: string = ctx.data.data.options[0].options.filter(option => option.name === "list-title")[0].value;
 
-        const targetTemp: string = ctx.data.data.options[0].options.filter(option => option.name == "target")[0].value;
-        const bountyTemp = ctx.data.data.options[0].options.filter(option => option.name == "bounty");
+        const targetTemp: string = ctx.data.data.options[0].options.filter(option => option.name === "target")[0].value;
+        const bountyTemp = ctx.data.data.options[0].options.filter(option => option.name === "bounty");
         console.log(targetTemp)
         const bounty = bountyTemp[0] ? bountyTemp[0].value : 0;
 
@@ -107,7 +107,7 @@ export class AddListCommand extends SlashCommand {
 
         if (typeof targetTemp === "string") {
             if (!regex.test(targetTemp.trim())) {
-                return "Invalid channel.";
+                return "Invalid channel; target not a string!.";
             }
             const target = matchRegex.exec(targetTemp)[0];
             console.log("Target: ", target);

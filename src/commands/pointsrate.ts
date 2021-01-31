@@ -25,12 +25,12 @@ export class PointsRate extends SlashCommand {
     }
 
     async run(ctx) {
-        const channelToChange = ctx.data.data.options.filter(option => option.name == "channel")[0].value;
-        const pointsRate = ctx.data.data.options.filter(option => option.name == "points-rate")[0].value;
+        const channelToChange = ctx.data.data.options.filter(option => option.name === "channel")[0].value;
+        const pointsRate = ctx.data.data.options.filter(option => option.name === "points-rate")[0].value;
         console.log(channelToChange);
         let anyChannel = await AnyChannel.getAnyChannel(channelToChange.toString());
         console.log(anyChannel);
-        if (anyChannel == null) {
+        if (anyChannel === null) {
            anyChannel = new AnyChannel();
            anyChannel.channelId = channelToChange;
            anyChannel.pointsRate = pointsRate;

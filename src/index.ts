@@ -79,7 +79,7 @@ client.on("message", async (message) => {
    if (!LIST_REGEX.test(message.content)) {
       const anyChannel = await AnyChannel.getAnyChannel(message.channel.id);
       const member = await Member.getMember(message.author.id);
-      const points = anyChannel == null ? POINTS_PER_ENTRY : anyChannel.pointsRate;
+      const points = anyChannel === null ? POINTS_PER_ENTRY : anyChannel.pointsRate;
       await member.addPoints(points);
       const activity = new Activity(message.author.id, points);
       activity.channel = message.channel.id;
@@ -88,7 +88,7 @@ client.on("message", async (message) => {
    }
    console.log(message.content);
    const result = await getConnection().getRepository(Channel).createQueryBuilder("channel").where("channel.id = :id", {id: message.channel.id}).getOne();
-   if (result == null || result.lastListId == null) {
+   if (result === null || result.lastListId === null) {
       return;
    }
    const lastList = result.lastListId;

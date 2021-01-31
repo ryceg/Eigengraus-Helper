@@ -7,11 +7,11 @@ export class ListUtility {
     public static async newList(channelID: string): Promise<string> {
         const channel = await Channel.getChannel(channelID)
         console.log("Channel", channel);
-        if (channel == null || channel.lastListId !== null) {
+        if (channel === null || channel.lastListId !== null) {
             return "This channel does not have a target set. Please set one first.";
         }
         const list = await List.getNonTakenList(channel.length, channel.length !== 0);
-        if (list == null) {
+        if (list === null) {
             const channel = await DiscordUtility.getChannelFromId(channelID);
             return "There are no lists that meet the criteria. <@&" + channel.guild.roles.cache.find((role) => role.name === LIST_MAKER_ROLE_NAME).id + ">";
         }

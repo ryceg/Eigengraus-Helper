@@ -16,7 +16,7 @@ export class FinishCommand extends SlashCommand {
 
     async run(ctx) {
         const result = await Channel.getChannel(ctx.channelID)
-        if (result == null || result.lastListId == null) {
+        if (result === null || result.lastListId === null) {
             return;
         }
         const lastList = result.lastListId;

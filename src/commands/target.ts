@@ -31,11 +31,11 @@ export class TargetCommand extends SlashCommand {
     }
 
     async run(ctx) {
-        const channelToChange = ctx.data.data.options.filter(option => option.name == "channel")[0].value;
-        const target = ctx.data.data.options.filter(option => option.name == "target")[0].value;
+        const channelToChange = ctx.data.data.options.filter(option => option.name === "channel")[0].value;
+        const target = ctx.data.data.options.filter(option => option.name === "target")[0].value;
 
         let channel = await Channel.getChannel(channelToChange);
-        if (channel == null) {
+        if (channel === null) {
            channel = new Channel();
            channel.id = channelToChange;
            channel.length = target;

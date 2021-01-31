@@ -23,7 +23,7 @@ export class AnarchyPostingCommand extends SlashCommand {
     async run(ctx) {
         if (!await DiscordUtility.isAdmin(ctx.member.roles))
             return;
-        (await Settings.getSettings()).anarchyPosting = ctx.data.data.options.filter(option => option.name == "value")[0].value;
+        (await Settings.getSettings()).anarchyPosting = ctx.data.data.options.filter(option => option.name === "value")[0].value;
         return "Anarchy posting updated.";
     }
 }

@@ -15,7 +15,7 @@ export class Member {
     static async getMember(discordId: Snowflake): Promise<Member> {
         try {
             const result = await getConnection().getRepository(Member).createQueryBuilder("member").where("member.discordId = :id", {id: discordId}).getOne();
-            if (result == null) {
+            if (result === null) {
                 const member = new Member();
                 member.discordId = discordId;
                 await Member.createMember(member);
