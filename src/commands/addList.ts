@@ -43,7 +43,7 @@ export class AddListCommand extends SlashCommand {
                 {
                     name: "number",
                     type: CommandOptionType.SUB_COMMAND,
-                    description: "Manually specify a list target.",
+                    description: "Manually specify a list target (which will post in any channel that fits).",
                     options: [
                         {
                             name: "target",
