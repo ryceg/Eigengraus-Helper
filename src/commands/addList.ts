@@ -85,7 +85,7 @@ export class AddListCommand extends SlashCommand {
 
         });
     }
-
+    // TODO: Specify type of ctx
     async run(ctx) {
         const connection = global.CONNECTION;
         console.log(JSON.stringify(ctx.data.data.options[0]));
