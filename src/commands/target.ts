@@ -16,13 +16,13 @@ export class TargetCommand extends SlashCommand {
             options: [
                 {
                     name: "channel",
-                    description: "The channel",
+                    description: "The channel.",
                     type: CommandOptionType.CHANNEL,
                     required: true
                 },
                 {
                     name: "target",
-                    description: "Target of the channel",
+                    description: "Target list size of the channel",
                     type: CommandOptionType.INTEGER,
                     required: true
                 }

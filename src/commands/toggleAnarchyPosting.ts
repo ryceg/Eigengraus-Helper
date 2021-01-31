@@ -14,7 +14,7 @@ export class AnarchyPostingCommand extends SlashCommand {
           options: [
             {
               name: "value",
-              description: "Whether anarchyposting should be on or off",
+              description: "Whether anarchyposting should be on or off.",
               type: CommandOptionType.BOOLEAN,
             },
           ],

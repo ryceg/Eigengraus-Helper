@@ -14,7 +14,7 @@ export class AutoPostingCommand extends SlashCommand {
           options: [
             {
               name: "value",
-              description: "Whether autoposting should be on or off",
+              description: "Whether autoposting should be on or off.",
               type: CommandOptionType.BOOLEAN,
             },
           ],

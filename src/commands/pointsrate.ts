@@ -11,7 +11,7 @@ export class PointsRate extends SlashCommand {
           options: [
             {
               name: "channel",
-              description: "The channel to change the points rate of",
+              description: "The channel to change the points rate of.",
               type: CommandOptionType.CHANNEL,
             },
             {
