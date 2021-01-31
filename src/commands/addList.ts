@@ -23,13 +23,13 @@ export class AddListCommand extends SlashCommand {
                     options: [
                         {
                             name: "target",
-                            description: "Target",
+                            description: "Targeted channel.",
                             type: CommandOptionType.CHANNEL,
                             required: true
                         },
                         {
                             name: "list-title",
-                            description: "The title of the list",
+                            description: "The title of the list.",
                             type: CommandOptionType.STRING,
                             required: true
                         },
@@ -47,12 +47,12 @@ export class AddListCommand extends SlashCommand {
                     options: [
                         {
                             name: "target",
-                            description: "Target",
+                            description: "Target number of entries for the list.",
                             type: CommandOptionType.INTEGER,
                         },
                         {
                             name: "list-title",
-                            description: "The title of the list",
+                            description: "The title of the list.",
                             type: CommandOptionType.STRING,
                         },
                         {
