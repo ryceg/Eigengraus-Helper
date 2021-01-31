@@ -146,7 +146,7 @@ export class AddListCommand extends SlashCommand {
                 await connection.getRepository(List).createQueryBuilder("list").insert().into(List).values([list]).execute();
                 await message.delete();
             })
-            return `${ctx.member.displayName} has added "${list.name}" to the pool of pending lists.`;
+            return await (await DiscordUtility.getChannelFromName(PENDING_LISTS_CHANNEL)).send(`${ctx.member.displayName} has added "${list.name}" to the pool of pending lists.`);
         }
 
     }
