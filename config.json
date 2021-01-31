@@ -6,5 +6,11 @@
   "FINISHED_ARRAYS_CHANNEL": "arrays",
   "PENDING_LISTS_CHANNEL": "pending-lists",
   "TICK_EMOJI": "✅",
-  "CROSS_EMOJI": "❌"
+  "CROSS_EMOJI": "❌",
+  "ADMIN_ROLE_NAME": "Supreme Overlord",
+  "MOD_ROLE_NAME": "mod",
+  "LIST_MAKER_ROLE_NAME": "List Maker",
+  "LIST_APPROVER_ROLE_NAME": "List Approver",
+  "LIST_BOUNTY_HUNTER_ROLE_NAME": "Bounty Hunter",
+  "LIST_LISTENER_ROLE_NAME": "List Listener"
 }
