@@ -34,8 +34,8 @@ export class AddListCommand extends SlashCommand {
                             required: true
                         },
                         {
-                            name: "admin-only-bounty",
-                            description: "[ADMIN-ONLY] Bounty",
+                            name: "bounty",
+                            description: "[ADMIN-ONLY] Extra points to be awarded for entries to this list.",
                             type: CommandOptionType.INTEGER,
                         }
                     ]
@@ -56,8 +56,8 @@ export class AddListCommand extends SlashCommand {
                             type: CommandOptionType.STRING,
                         },
                         {
-                            name: "admin-only-bounty",
-                            description: "[ADMIN-ONLY] Bounty",
+                            name: "bounty",
+                            description: "[ADMIN-ONLY] Extra points to be awarded for entries to this list.",
                             type: CommandOptionType.INTEGER,
                         }
                     ]
@@ -77,8 +77,8 @@ export class AddListCommand extends SlashCommand {
             //         type: CommandOptionType.STRING,
             //     },
             //     {
-            //         name: "admin-only-bounty",
-            //         description: "[ADMIN-ONLY] Bounty",
+            //         name: "bounty",
+            //         description: "[ADMIN-ONLY] Extra points to be awarded for entries to this list.",
             //         type: CommandOptionType.INTEGER,
             //     }
             // ]
@@ -92,7 +92,7 @@ export class AddListCommand extends SlashCommand {
         const listTitle: string = ctx.data.data.options[0].options.filter(option => option.name == "list-title")[0].value;
 
         const targetTemp: string = ctx.data.data.options[0].options.filter(option => option.name == "target")[0].value;
-        const bountyTemp = ctx.data.data.options[0].options.filter(option => option.name == "admin-only-bounty");
+        const bountyTemp = ctx.data.data.options[0].options.filter(option => option.name == "bounty");
         console.log(targetTemp)
         const bounty = bountyTemp[0] ? bountyTemp[0].value : 0;
 
