@@ -22,10 +22,10 @@ export class FinishCommand extends SlashCommand {
         const lastList = result.lastListId;
         const list = await List.getList(lastList);
         if (await list.isFinished() || (await Settings.getSettings()).anarchyPosting) {
-            console.log("Finishing list..");
+            console.log("Finishing list...");
             await list.finish(result);
         } else {
-            console.log("List ")
+            console.log("List not yet finished!")
             return "The list is not yet finished!";
         }
     }
