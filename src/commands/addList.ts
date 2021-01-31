@@ -137,7 +137,7 @@ export class AddListCommand extends SlashCommand {
             const message = await (await DiscordUtility.getChannelFromName(PENDING_LISTS_CHANNEL)).send(pendingList.generateEmbed());
             await message.react(TICK_EMOJI);
             await message.react(CROSS_EMOJI);
-            const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === "✅" || reaction.emoji.name === "❌" && DiscordUtility.isAdminId(user.id), {max: 1});
+            const collected = await message.awaitReactions((reaction, user) => reaction.emoji.name === TICK_EMOJI || reaction.emoji.name === CROSS_EMOJI && DiscordUtility.isAdminId(user.id), {max: 1});
             collected.forEach(async (reaction) => {
                 if (reaction.emoji.name === CROSS_EMOJI) {
                     message.delete();
