@@ -20,6 +20,7 @@ export class MeCommand extends SlashCommand {
     const contributions = await Activity.getMemberContributions(ctx.member.id)
     const member = await Member.getMember(ctx.member.id)
     let embed = new MessageEmbed()
+    embed.addField("User", ctx.member.displayName, true)
     embed.addField("Total points", member.points + " points.", true)
     embed.addField(
       "Total points last 7 days",
