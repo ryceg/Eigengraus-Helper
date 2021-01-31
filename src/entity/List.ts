@@ -53,6 +53,7 @@ export class List {
         let embed = new MessageEmbed();
         embed.setTitle(this.name);
         !finished ? embed.addField("Target", this.target) : {};
+        // TODO: This will trigger if `this.bounty === null`
         !finished && this.bounty !== 0 ? embed.addField("Bounty", this.bounty) : {};
         if (this.items.length !== 0) {
             embed.addField("Items", this.items.map((val, index) => `${index+1}. ${val}`))
@@ -61,6 +62,7 @@ export class List {
     }
 
     public isFinished(): boolean {
+        // TODO: This will not trigger if the list has been extended past the list's target.
         return this.items.filter((val) => val.length > 0).length === this.items.length
     }
 
