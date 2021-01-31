@@ -83,6 +83,5 @@ export class RescanCommand extends SlashCommand {
         list.items = items;
         await List.updateList(list);
         await (await channel.messages.fetch(list.messageId)).edit(list.generateEmbed());
-
     }
 }
