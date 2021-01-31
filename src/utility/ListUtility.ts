@@ -1,8 +1,7 @@
 import {Channel} from "../entity/Channel";
 import {List} from "../entity/List";
 import {DiscordUtility} from "./DiscordUtility";
-
-const listMakerRoleName = 'List Maker'
+const {LIST_MAKER_ROLE_NAME} = require("../../config.json");
 
 export class ListUtility {
     public static async newList(channelID: string): Promise<string> {
@@ -14,7 +13,7 @@ export class ListUtility {
         const list = await List.getNonTakenList(channel.length, channel.length !== 0);
         if (list == null) {
             const channel = await DiscordUtility.getChannelFromId(channelID);
-            return "There are no lists that meet the criteria. <@&" + channel.guild.roles.cache.find((role) => role.name === listMakerRoleName).id + ">";
+            return "There are no lists that meet the criteria. <@&" + channel.guild.roles.cache.find((role) => role.name === LIST_MAKER_ROLE_NAME).id + ">";
         }
         console.log(list);
         const dChannel = await DiscordUtility.getChannelFromId(channelID);
