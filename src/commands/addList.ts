@@ -1,4 +1,4 @@
-import {CommandOptionType, SlashCommand} from "slash-create";
+import {CommandContext, CommandOptionType, CommandSubcommandOption, SlashCommand} from "slash-create";
 import {List} from "../entity/List";
 import {Channel} from "../entity/Channel";
 import {DiscordUtility} from "../utility/DiscordUtility";
@@ -86,13 +86,17 @@ export class AddListCommand extends SlashCommand {
         });
     }
     // TODO: Specify type of ctx
-    async run(ctx) {
+    async run(ctx: CommandContext) {
         const connection = global.CONNECTION;
-        console.log(JSON.stringify(ctx.data.data.options[0]));
-        const listTitle: string = ctx.data.data.options[0].options.filter(option => option.name === "list-title")[0].value;
-
-        const targetTemp: string = ctx.data.data.options[0].options.filter(option => option.name === "target")[0].value;
-        const bountyTemp = ctx.data.data.options[0].options.filter(option => option.name === "bounty");
+        const subcommand: CommandSubcommandOption =
+          ctx.data.data.options[0]
+        console.log(JSON.stringify(subcommand));
+        const listTitle: string = subcommand.options.filter(option => option.name === "list-title")[0].value;
+        // TODO: isn't this meant to be a number? 
+        // Target is being used as both "target channel" and "target number".
+        // This is extremely confusing, and should be avoided.
+        const targetTemp: string = subcommand.options.filter(option => option.name === "target")[0].value;
+        const bountyTemp = subcommand.options.filter(option => option.name === "bounty");
         console.log(targetTemp)
         const bounty = bountyTemp[0] ? bountyTemp[0].value : 0;
 

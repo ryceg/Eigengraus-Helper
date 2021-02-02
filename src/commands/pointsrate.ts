@@ -1,4 +1,4 @@
-import {CommandOptionType, SlashCommand} from "slash-create";
+import {CommandContext, CommandOption, CommandOptionType, SlashCommand} from "slash-create";
 import {AnyChannel} from "../entity/AnyChannel";
 const { GUILD_ID } = require("../../config.json");
 
@@ -25,13 +25,14 @@ export class PointsRate extends SlashCommand {
   }
 
   // TODO: Specify type of ctx
-  async run(ctx) {
-    const channelToChange = ctx.data.data.options.filter(
+  async run(ctx: CommandContext) {
+    const commandOption: CommandOption[] = ctx.data.data.options
+    const channelToChange = commandOption.filter(
       (option) => option.name === "channel"
-    )[0].value
-    const pointsRate = ctx.data.data.options.filter(
+    )[0].value as string
+    const pointsRate = commandOption.filter(
       (option) => option.name === "points-rate"
-    )[0].value
+    )[0].value as number
     console.log(channelToChange)
     let anyChannel = await AnyChannel.getAnyChannel(channelToChange.toString())
     console.log(anyChannel)
