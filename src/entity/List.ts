@@ -63,6 +63,32 @@ export class List {
         return embed;
     }
 
+
+    public generateEmbedPaginated(): MessageEmbed {
+        let embed = new MessageEmbed();
+        embed.setTitle(this.name);
+
+        if (this.items.length !== 0) {
+            let totalLength = 0;
+            for (let item in this.items) {
+                totalLength += this.items[item].length;
+            }
+            let part = 1;
+            let content = "";
+            for (let i = 0; i < this.items.length; i++) {
+                content += `${i+ 1}. ${this.items[i].trim()}\n`;
+            }
+
+            for (let i = 0; i < totalLength; i+=1024) {
+                content = content.trim();
+                embed.addField("Items " + part, content.substring(i, Math.min(content.length, i + 1024)));
+                part++;
+            }
+        }
+
+        return embed;
+    }
+
     public isFinished(): boolean {
         return this.items.filter((val) => val.length > 0).length === this.items.length
     }
