@@ -14,7 +14,7 @@ export class ListUtility {
       channel.length,
       channel.length !== 0
     )
-    if (list === null) {
+    if (!list) {
       const channel = await DiscordUtility.getChannelFromId(channelID)
       return (
         "There are no lists that meet the criteria. <@&" +
