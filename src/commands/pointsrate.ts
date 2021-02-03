@@ -1,6 +1,11 @@
-import {CommandContext, CommandOption, CommandOptionType, SlashCommand} from "slash-create";
-import {AnyChannel} from "../entity/AnyChannel";
-const { GUILD_ID } = require("../../config.json");
+import {
+  CommandContext,
+  CommandOption,
+  CommandOptionType,
+  SlashCommand,
+} from "slash-create"
+import { AnyChannel } from "../entity/AnyChannel"
+const { GUILD_ID } = require("../../config.json")
 
 export class PointsRate extends SlashCommand {
   constructor(creator) {

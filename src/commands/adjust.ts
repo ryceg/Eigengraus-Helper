@@ -1,9 +1,9 @@
-import {SlashCommand} from "slash-create";
-import {CommandOptionType} from "slash-create/lib/constants";
-import {DiscordUtility} from "../utility/DiscordUtility";
-import {Settings} from "../entity/Settings";
-import {Member} from "../entity/Member";
-const { GUILD_ID } = require("../../config.json");
+import { SlashCommand } from "slash-create"
+import { CommandOptionType } from "slash-create/lib/constants"
+import { DiscordUtility } from "../utility/DiscordUtility"
+import { Settings } from "../entity/Settings"
+import { Member } from "../entity/Member"
+const { GUILD_ID } = require("../../config.json")
 
 export class AnarchyPostingCommand extends SlashCommand {
   constructor(creator) {

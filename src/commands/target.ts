@@ -1,11 +1,11 @@
-import {CommandOptionType, SlashCommand} from "slash-create";
-import {getConnection} from "typeorm";
-import {List} from "../entity/List";
-import {Channel} from "../entity/Channel";
-import {MessageEmbed, TextChannel} from "discord.js";
-import {DiscordUtility} from "../utility/DiscordUtility";
-import {ListUtility} from "../utility/ListUtility";
-const { GUILD_ID } = require("../../config.json");
+import { CommandOptionType, SlashCommand } from "slash-create"
+import { getConnection } from "typeorm"
+import { List } from "../entity/List"
+import { Channel } from "../entity/Channel"
+import { MessageEmbed, TextChannel } from "discord.js"
+import { DiscordUtility } from "../utility/DiscordUtility"
+import { ListUtility } from "../utility/ListUtility"
+const { GUILD_ID } = require("../../config.json")
 
 export class TargetCommand extends SlashCommand {
   constructor(creator) {
@@ -51,4 +51,3 @@ export class TargetCommand extends SlashCommand {
     await Channel.updateChannel(channel)
   }
 }
-

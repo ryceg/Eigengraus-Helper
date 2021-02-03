@@ -1,3 +1,3 @@
-import {Client} from "discord.js";
+import { Client } from "discord.js"
 
-declare var CLIENT: Client;
+declare var CLIENT: Client
