@@ -1,9 +1,9 @@
-import {CommandOptionType, SlashCommand} from "slash-create";
-import {Activity} from "../entity/Activity";
-import {MessageEmbed, TextChannel} from "discord.js";
-import {DiscordUtility} from "../utility/DiscordUtility";
-import {Member} from "../entity/Member";
-const { GUILD_ID } = require("../../config.json");
+import { CommandOptionType, SlashCommand } from "slash-create"
+import { Activity } from "../entity/Activity"
+import { MessageEmbed, TextChannel } from "discord.js"
+import { DiscordUtility } from "../utility/DiscordUtility"
+import { Member } from "../entity/Member"
+const { GUILD_ID } = require("../../config.json")
 
 export class MeCommand extends SlashCommand {
   constructor(creator) {
