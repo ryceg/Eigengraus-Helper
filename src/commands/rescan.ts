@@ -23,7 +23,7 @@ export class RescanCommand extends SlashCommand {
   async run(ctx) {
     const channelId = ctx.channelID
     const result = await Channel.getChannel(channelId)
-    if (result == null || result.lastListId == null) {
+    if (result === null || result.lastListId === null) {
       return "There are no lists in this channel."
     }
     const list = await List.getList(result.lastListId)
@@ -60,7 +60,7 @@ export class RescanCommand extends SlashCommand {
     })
     console.log(items)
     for (let i = 0; i < list.target; i++) {
-      if (items[i] == null) {
+      if (items[i] === null) {
         items[i] = ""
       }
     }
