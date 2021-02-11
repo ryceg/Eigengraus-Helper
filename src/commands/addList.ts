@@ -98,15 +98,15 @@ export class AddListCommand extends SlashCommand {
   // TODO: Specify type of ctx
   async run(ctx: CommandContext) {
     const connection = global.CONNECTION
-    const subcommand: CommandSubcommandOption = ctx.data.data.options[0]
+    const subcommand: CommandSubcommandOption = ctx.data.data.options[0] as CommandSubcommandOption
     console.log(JSON.stringify(subcommand))
-    const listTitle: string = subcommand.options.filter(
+    const listTitle: string | number | boolean = subcommand.options.filter(
       (option) => option.name === "list-title"
     )[0].value
     // TODO: isn't this meant to be a number?
     // Target is being used as both "target channel" and "target number".
     // This is extremely confusing, and should be avoided.
-    const targetTemp: string = subcommand.options.filter(
+    const targetTemp: string | number | boolean = subcommand.options.filter(
       (option) => option.name === "target"
     )[0].value
     const bountyTemp = subcommand.options.filter(
@@ -116,9 +116,9 @@ export class AddListCommand extends SlashCommand {
     const bounty = bountyTemp[0] ? bountyTemp[0].value : 0
 
     const list = new List()
-    list.name = listTitle
+    list.name = listTitle as string
     if (await DiscordUtility.isAdmin(ctx.member.roles)) {
-      list.bounty = bounty
+      list.bounty = bounty as number
     } else {
       list.bounty = 0
     }
@@ -138,7 +138,7 @@ export class AddListCommand extends SlashCommand {
       }
     } else {
       console.log("Target Temp: ", targetTemp)
-      list.target = targetTemp
+      list.target = targetTemp as number
     }
 
     list.items = []
@@ -184,11 +184,7 @@ export class AddListCommand extends SlashCommand {
           .execute()
         await message.delete()
       })
-      return await (
-        await DiscordUtility.getChannelFromName(PENDING_LISTS_CHANNEL)
-      ).send(
-        `${ctx.member.displayName} has added "${list.name}" to the pool of pending lists.`
-      )
+      return `${ctx.member.displayName} has added "${list.name}" to the pool of pending lists.`
     }
   }
 }
