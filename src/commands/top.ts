@@ -1,4 +1,4 @@
-import { SlashCommand } from "slash-create"
+import { CommandContext, SlashCommand } from "slash-create"
 import { CommandOptionType } from "slash-create/lib/constants"
 import { Activity } from "../entity/Activity"
 import { MessageEmbed } from "discord.js"

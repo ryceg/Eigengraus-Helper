@@ -1,4 +1,4 @@
-import { SlashCommand } from "slash-create"
+import { CommandContext, SlashCommand } from "slash-create"
 import { CommandOptionType } from "slash-create/lib/constants"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"

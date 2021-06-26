@@ -1,4 +1,4 @@
-import { CommandOptionType, SlashCommand } from "slash-create"
+import { CommandContext, CommandOptionType, SlashCommand } from "slash-create"
 import { getConnection } from "typeorm"
 import { List } from "../entity/List"
 import { Channel } from "../entity/Channel"
