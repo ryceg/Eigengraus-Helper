@@ -75,30 +75,13 @@ export class AddListCommand extends SlashCommand {
             },
           ],
         },
-      ],
-      // options: [
-      //     {
-      //         name: "target",
-      //         description: "Channel",
-      //         type: CommandOptionType.STRING,
-      //     },
-      //     {
-      //         name: "list-title",
-      //         description: "The title of the list",
-      //         type: CommandOptionType.STRING,
-      //     },
-      //     {
-      //         name: "bounty",
-      //         description: "[ADMIN-ONLY] Extra points to be awarded for entries to this list.",
-      //         type: CommandOptionType.INTEGER,
-      //     }
-      // ]
+      ]
     })
   }
 
   async run(ctx: CommandContext) {
     const connection = global.CONNECTION
-    const subcommand: CommandSubcommandOption = ctx.data.data.options[0] as CommandSubcommandOption
+    const subcommand: CommandSubcommandOption = ctx.data.data.options[0][CommandOptionType.SUB_COMMAND]
     console.log(JSON.stringify(subcommand))
     const listTitle: string | number | boolean = subcommand.options.filter(
       (option) => option.name === "list-title"
