@@ -1,4 +1,4 @@
-import { CommandContext, CommandOptionType, SlashCommand } from "slash-create"
+import { CommandContext, CommandIntegerOption, CommandOptionType, CommandStringOption, SlashCommand } from "slash-create"
 import { getConnection } from "typeorm"
 import { List } from "../entity/List"
 import { Channel } from "../entity/Channel"
@@ -32,13 +32,15 @@ export class TargetCommand extends SlashCommand {
 
 
   async run(ctx: CommandContext) {
-    const channelToChange = ctx.data.data.options.filter(
+    const commandOptionChannelToChange = ctx.data.data.options.find(
       (option) => option.name === "channel"
-    )[0].value
-    const target = ctx.data.data.options.filter(
-      (option) => option.name === "target"
-    )[0].value
+    ) as CommandStringOption | undefined
+    const commandOptionTarget = ctx.data.data.options.find(
+      (option) => option.name === "channel"
+    ) as CommandIntegerOption | undefined
 
+    const target = commandOptionTarget.value
+    const channelToChange = commandOptionChannelToChange.value
     let channel = await Channel.getChannel(channelToChange)
     if (channel === null) {
       channel = new Channel()
