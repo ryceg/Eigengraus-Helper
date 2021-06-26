@@ -83,24 +83,26 @@ export class AddListCommand extends SlashCommand {
     const connection = global.CONNECTION
     const subcommand: CommandSubcommandOption = ctx.data.data.options[0][CommandOptionType.SUB_COMMAND]
     console.log(JSON.stringify(subcommand))
-    const listTitle: string | number | boolean = subcommand.options.filter(
+    const listTitle: string | number | boolean = subcommand.options.find(
       (option) => option.name === "list-title"
-    )[0].value
+    ).value
     // TODO: isn't this meant to be a number?
     // Target is being used as both "target channel" and "target number".
     // This is extremely confusing, and should be avoided.
-    const targetTemp: string | number | boolean = subcommand.options.filter(
+    const targetTemp: string | number | boolean = subcommand.options.find(
       (option) => option.name === "target"
-    )[0].value
+    ).value
     const bounty = subcommand.options.find(
       (option) => option.name === "bounty"
     ) || 0
 
     console.log(targetTemp)
     const list = new List()
-    list.name = listTitle as string
+    list.name = listTitle.toString()
+
+    // if the person firing the command is an admin, add the bounty
     if (await DiscordUtility.isAdmin(ctx.member.roles)) {
-      list.bounty = bounty as number
+      list.bounty = bounty
     } else {
       list.bounty = 0
     }
