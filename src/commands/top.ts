@@ -14,7 +14,7 @@ export class TopCommand extends SlashCommand {
     })
   }
 
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     const topMemberResults = await Activity.getTopMembers()
     const topChannelResults = await Activity.getTopChannels()

@@ -95,7 +95,7 @@ export class AddListCommand extends SlashCommand {
       // ]
     })
   }
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     const connection = global.CONNECTION
     const subcommand: CommandSubcommandOption = ctx.data.data.options[0] as CommandSubcommandOption
@@ -109,12 +109,11 @@ export class AddListCommand extends SlashCommand {
     const targetTemp: string | number | boolean = subcommand.options.filter(
       (option) => option.name === "target"
     )[0].value
-    const bountyTemp = subcommand.options.filter(
+    const bounty = subcommand.options.find(
       (option) => option.name === "bounty"
-    )
-    console.log(targetTemp)
-    const bounty = bountyTemp[0] ? bountyTemp[0].value : 0
+    ) || 0
 
+    console.log(targetTemp)
     const list = new List()
     list.name = listTitle as string
     if (await DiscordUtility.isAdmin(ctx.member.roles)) {

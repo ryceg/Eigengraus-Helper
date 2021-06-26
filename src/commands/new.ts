@@ -17,7 +17,7 @@ export class NewCommand extends SlashCommand {
     })
   }
   // TODO: `/new` does not currently use an argument.
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     return await ListUtility.newList(ctx.channelID)
   }

@@ -29,7 +29,7 @@ export class PointsRate extends SlashCommand {
     })
   }
 
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     const commandOption: CommandOption[] = ctx.data.data.options
     const channelToChange = commandOption.filter(

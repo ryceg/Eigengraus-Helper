@@ -30,7 +30,7 @@ export class TargetCommand extends SlashCommand {
     })
   }
 
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     const channelToChange = ctx.data.data.options.filter(
       (option) => option.name === "channel"

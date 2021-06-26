@@ -14,7 +14,7 @@ export class FinishCommand extends SlashCommand {
     })
   }
 
-  // TODO: Specify type of ctx
+
   async run(ctx: CommandContext) {
     const result = await Channel.getChannel(ctx.channelID)
     if (result === null || result.lastListId === null) {
