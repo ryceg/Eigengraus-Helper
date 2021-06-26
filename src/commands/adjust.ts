@@ -26,7 +26,7 @@ export class AnarchyPostingCommand extends SlashCommand {
     })
   }
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
     console.log(ctx.data.data.options)
     const value: string = ctx.data.data.options.filter(

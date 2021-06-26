@@ -1,8 +1,8 @@
-import {CommandOptionType, SlashCommand} from "slash-create";
-import {List} from "../entity/List";
-import {getConnection} from "typeorm";
-import {Channel} from "../entity/Channel";
-import {Settings} from "../entity/Settings";
+import { CommandOptionType, SlashCommand } from "slash-create";
+import { List } from "../entity/List";
+import { getConnection } from "typeorm";
+import { Channel } from "../entity/Channel";
+import { Settings } from "../entity/Settings";
 const { GUILD_ID } = require("../../config.json");
 
 export class FinishCommand extends SlashCommand {
@@ -15,7 +15,7 @@ export class FinishCommand extends SlashCommand {
   }
 
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     const result = await Channel.getChannel(ctx.channelID)
     if (result === null || result.lastListId === null) {
       return

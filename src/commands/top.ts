@@ -15,7 +15,7 @@ export class TopCommand extends SlashCommand {
   }
 
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     const topMemberResults = await Activity.getTopMembers()
     const topChannelResults = await Activity.getTopChannels()
     const embed = new MessageEmbed()
@@ -24,11 +24,10 @@ export class TopCommand extends SlashCommand {
     let index = 0
     for (const activity of topMemberResults) {
       index++
-      top5Members += `${index}. <@${
-        activity.member
-      }> - ${await Activity.getPointsForMemberLast30Days(
-        activity.member
-      )} points in the last 30 days\n`
+      top5Members += `${index}. <@${activity.member
+        }> - ${await Activity.getPointsForMemberLast30Days(
+          activity.member
+        )} points in the last 30 days\n`
     }
     index = 0
 

@@ -21,11 +21,11 @@ export class AutoPostingCommand extends SlashCommand {
     })
   }
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
-    ;(await Settings.getSettings()).autoPosting = ctx.data.data.options.filter(
-      (option) => option.name === "value"
-    )[0].value
+      ; (await Settings.getSettings()).autoPosting = ctx.data.data.options.filter(
+        (option) => option.name === "value"
+      )[0].value
     return "Autoposting updated."
   }
 }

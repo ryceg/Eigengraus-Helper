@@ -21,13 +21,13 @@ export class AnarchyPostingCommand extends SlashCommand {
     })
   }
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
-    ;(
-      await Settings.getSettings()
-    ).anarchyPosting = ctx.data.data.options.filter(
-      (option) => option.name === "value"
-    )[0].value
+      ; (
+        await Settings.getSettings()
+      ).anarchyPosting = ctx.data.data.options.filter(
+        (option) => option.name === "value"
+      )[0].value
     return "Anarchy posting updated."
   }
 }

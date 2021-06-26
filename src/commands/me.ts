@@ -16,7 +16,7 @@ export class MeCommand extends SlashCommand {
   }
 
   // TODO: Specify type of ctx
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     const contributions = await Activity.getMemberContributions(ctx.member.id)
     const member = await Member.getMember(ctx.member.id)
     let embed = new MessageEmbed()
