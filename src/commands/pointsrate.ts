@@ -1,7 +1,8 @@
 import {
   CommandContext,
-  CommandOption,
+  CommandIntegerOption,
   CommandOptionType,
+  CommandStringOption,
   SlashCommand,
 } from "slash-create"
 import { AnyChannel } from "../entity/AnyChannel"
@@ -10,10 +11,9 @@ const { GUILD_ID } = require("../../config.json")
 export class PointsRate extends SlashCommand {
   constructor(creator) {
     super(creator, {
-      // TODO: is this meant to be "points-rate?"
-      name: "pointsrate",
+      name: "points-rate",
       description: "[ADMIN-ONLY] Changes the point rate of a channel.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
       options: [
         {
           name: "channel",
@@ -31,13 +31,15 @@ export class PointsRate extends SlashCommand {
 
 
   async run(ctx: CommandContext) {
-    const commandOption: CommandOption[] = ctx.data.data.options
-    const channelToChange = commandOption.filter(
+    const commandOption = ctx.data.data.options
+    const optionChannel = commandOption.find(
       (option) => option.name === "channel"
-    )[0].value as string
-    const pointsRate = commandOption.filter(
+    ) as CommandStringOption
+    const channelToChange = optionChannel.value
+    const optionPointsRate = commandOption.find(
       (option) => option.name === "points-rate"
-    )[0].value as number
+    ) as CommandIntegerOption
+    const pointsRate = optionPointsRate.value
     console.log(channelToChange)
     let anyChannel = await AnyChannel.getAnyChannel(channelToChange.toString())
     console.log(anyChannel)
