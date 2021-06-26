@@ -1,5 +1,5 @@
 import { CommandContext, SlashCommand } from "slash-create"
-import { CommandOptionType } from "slash-create/lib/constants"
+import { CommandOptionType, CommandStringOption } from "slash-create/lib/constants"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"
 import { Member } from "../entity/Member"
@@ -29,12 +29,17 @@ export class AnarchyPostingCommand extends SlashCommand {
   async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
     console.log(ctx.data.data.options)
-    const value: string = ctx.data.data.options.filter(
+
+    const optionValue = ctx.data.data.options.find(
       (option) => option.name === "value"
-    )[0].value
-    const user: string = ctx.data.data.options.filter(
+    ) as CommandStringOption
+    const value = optionValue.value
+
+    const optionUser = ctx.data.data.options.find(
       (option) => option.name === "user"
-    )[0].value
+    ) as CommandStringOption
+    const user = optionUser.value
+
     if (!["+", "-"].includes(value.charAt(0)))
       return "You're missing a + or - at the beginning of the points"
     const member = await Member.getMember(user)
