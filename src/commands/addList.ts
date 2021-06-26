@@ -1,6 +1,8 @@
 import {
   CommandContext,
+  CommandIntegerOption,
   CommandOptionType,
+  CommandStringOption,
   CommandSubcommandOption,
   SlashCommand,
 } from "slash-create"
@@ -18,6 +20,12 @@ const { GUILD_ID } = require("../../config.json")
 const regex = new RegExp("<#[0-9]{18}>")
 const matchRegex = new RegExp("(?<=#)(.*?)(?=>)")
 
+const commandOptionTargetAmount = 'target-amount'
+const commandOptionTargetChannel = 'target'
+const commandOptionListTitle = 'list-title'
+const commandOptionListTitleDescription = "The title of the list."
+
+
 export class AddListCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
@@ -32,14 +40,14 @@ export class AddListCommand extends SlashCommand {
           description: "Use a channel to get the target.",
           options: [
             {
-              name: "target",
+              name: commandOptionTargetChannel,
               description: "Targeted channel.",
               type: CommandOptionType.CHANNEL,
               required: true,
             },
             {
-              name: "list-title",
-              description: "The title of the list.",
+              name: commandOptionListTitle,
+              description: commandOptionListTitleDescription,
               type: CommandOptionType.STRING,
               required: true,
             },
@@ -58,13 +66,13 @@ export class AddListCommand extends SlashCommand {
             "Manually specify a list target (which will post in any channel that fits).",
           options: [
             {
-              name: "target",
+              name: commandOptionTargetAmount,
               description: "Target number of entries for the list.",
               type: CommandOptionType.INTEGER,
             },
             {
-              name: "list-title",
-              description: "The title of the list.",
+              name: commandOptionListTitle,
+              description: commandOptionListTitleDescription,
               type: CommandOptionType.STRING,
             },
             {
@@ -83,18 +91,29 @@ export class AddListCommand extends SlashCommand {
     const connection = global.CONNECTION
     const subcommand: CommandSubcommandOption = ctx.data.data.options[0][CommandOptionType.SUB_COMMAND]
     console.log(JSON.stringify(subcommand))
-    const listTitle: string | number | boolean = subcommand.options.find(
-      (option) => option.name === "list-title"
-    ).value
-    // TODO: isn't this meant to be a number?
-    // Target is being used as both "target channel" and "target number".
-    // This is extremely confusing, and should be avoided.
-    const targetTemp: string | number | boolean = subcommand.options.find(
-      (option) => option.name === "target"
-    ).value
-    const bounty = subcommand.options.find(
+
+    const optionTargetNumber = subcommand.options.find(
+      (option) => option.name === commandOptionTargetAmount
+    ) as CommandIntegerOption | undefined
+
+    const optionTargetTitle = subcommand.options.find(
+      (option) => option.name === commandOptionTargetChannel
+    ) as CommandStringOption | undefined
+
+    const optionListTitle = subcommand.options.find(
+      (option) => option.name === commandOptionListTitle
+    ) as CommandStringOption | undefined
+
+    const optionBounty = subcommand.options.find(
       (option) => option.name === "bounty"
-    ) || 0
+    ) as CommandIntegerOption | undefined
+
+    const bounty = optionBounty.value || 0
+    const targetNumber = optionTargetNumber.value
+    const targetChannel = optionTargetTitle.value
+    const listTitle = optionListTitle.value
+
+    const targetTemp = targetNumber || targetChannel
 
     console.log(targetTemp)
     const list = new List()
@@ -122,11 +141,12 @@ export class AddListCommand extends SlashCommand {
       }
     } else {
       console.log("Target Temp: ", targetTemp)
-      list.target = targetTemp as number
+      list.target = targetTemp
     }
 
     list.items = []
     list.items.length = list.target
+    // fill the list up with empty values
     list.items = list.items.fill("", 0, list.target)
     console.log(list)
     if (await DiscordUtility.isAdmin(ctx.member.roles)) {
