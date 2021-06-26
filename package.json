@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryceg/Eigengrau-s-Helper.git"
+  },
   "devDependencies": {
     "@types/node": "^14.14.14",
     "@types/pg": "^7.14.7",
@@ -10,12 +14,12 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "discord.js": "12.5.1",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.18.0",
-    "pg": "^8.5.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "eslint": "7.29",
+    "pg": "8.6",
     "reflect-metadata": "^0.1.13",
-    "slash-create": "1.3.0",
-    "typeorm": "^0.2.29"
+    "slash-create": "^3.2.3",
+    "typeorm": "^0.2.32"
   }
 }
