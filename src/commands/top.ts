@@ -10,7 +10,7 @@ export class TopCommand extends SlashCommand {
     super(creator, {
       name: "top",
       description: "Gets the top members and channels of the last 30 days.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
     })
   }
 

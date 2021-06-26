@@ -10,7 +10,7 @@ export class AutoPostingCommand extends SlashCommand {
       name: "autoposting",
       description:
         "[ADMIN-ONLY] Toggles autoposting, automatically posts any available lists when a list is finished.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
       options: [
         {
           name: "value",

@@ -10,7 +10,7 @@ export class FinishCommand extends SlashCommand {
     super(creator, {
       name: "finish",
       description: "Scans and finishes the list in the channel, and posts the results.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
     })
   }
 

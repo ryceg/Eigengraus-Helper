@@ -12,7 +12,7 @@ export class TargetCommand extends SlashCommand {
     super(creator, {
       name: "target",
       description: "[ADMIN-ONLY] Sets the target for a channel.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
       options: [
         {
           name: "channel",

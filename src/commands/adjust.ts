@@ -10,7 +10,7 @@ export class AnarchyPostingCommand extends SlashCommand {
     super(creator, {
       name: "adjust",
       description: "[ADMIN-ONLY] Changes a member's points.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
       options: [
         {
           name: "user",

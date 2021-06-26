@@ -13,7 +13,7 @@ export class NewCommand extends SlashCommand {
       name: "new",
       description:
         "Starts a new list. If called without an argument, posts an unfinished list from the pool.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
     })
   }
   // TODO: `/new` does not currently use an argument.

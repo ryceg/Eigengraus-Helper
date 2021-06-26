@@ -11,7 +11,7 @@ export class MeCommand extends SlashCommand {
       name: "stats",
       description:
         "Get the stats of your recent messages and contributions to the hivemind.",
-      guildID: GUILD_ID,
+      guildIDs: GUILD_ID,
     })
   }
 
