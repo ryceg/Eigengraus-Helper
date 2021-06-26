@@ -32,13 +32,15 @@ export class PointsRate extends SlashCommand {
 
   async run(ctx: CommandContext) {
     const commandOption = ctx.data.data.options
+
     const optionChannel = commandOption.find(
       (option) => option.name === "channel"
     ) as CommandStringOption
-    const channelToChange = optionChannel.value
     const optionPointsRate = commandOption.find(
       (option) => option.name === "points-rate"
     ) as CommandIntegerOption
+
+    const channelToChange = optionChannel.value
     const pointsRate = optionPointsRate.value
     console.log(channelToChange)
     let anyChannel = await AnyChannel.getAnyChannel(channelToChange.toString())

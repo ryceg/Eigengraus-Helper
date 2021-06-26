@@ -35,10 +35,10 @@ export class RescanCommand extends SlashCommand {
     }
     const list = await List.getList(result.lastListId)
     const channel = await DiscordUtility.getChannelFromId(channelId)
-    const startValue = ctx.data.data.options.filter((object) => object.name === "start")[0].name;
-    // const startValue = ctx.data.options.options.filter((object) => object.name === "start")[0];
+    const startValue = ctx.data.data.options.find((object) => object.name === "start").name;
+
     const start = startValue !== undefined ? startValue : list.messageId;
-    // const messages = await channel.messages.fetch({ after: list.messageId })
+
     const messages = await channel.messages.fetch({ after: start })
     console.log(messages)
     const contentMap = messages.map((message) => message.content).reverse()
