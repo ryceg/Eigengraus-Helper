@@ -1,7 +1,7 @@
-import {CommandOptionType, SlashCommand} from "slash-create"
-import {Channel} from "../entity/Channel"
-import {DiscordUtility} from "../utility/DiscordUtility"
-import {List} from "../entity/List"
+import { CommandContext, CommandOptionType, SlashCommand } from "slash-create"
+import { Channel } from "../entity/Channel"
+import { DiscordUtility } from "../utility/DiscordUtility"
+import { List } from "../entity/List"
 
 const { GUILD_ID } = require("../../config.json")
 
@@ -12,22 +12,22 @@ const LIST_INDEX_REGEX = new RegExp("^(.*)(?=\\.)")
 const CONTENT_REGEX = new RegExp("(?<=\\.)(.*)(?=$)", "s")
 
 export class RescanCommand extends SlashCommand {
-    constructor(creator) {
-        super(creator, {
-            name: "rescan",
-            description: "Update the latest list with any missed entries.",
-            guildID: GUILD_ID,
-            options: [
-                {
-                    name: "start",
-                    type: CommandOptionType.STRING,
-                    description: "The message to start the rescan from."
-                }
-            ]
-        })
-    }
+  constructor(creator) {
+    super(creator, {
+      name: "rescan",
+      description: "Update the latest list with any missed entries.",
+      guildIDs: GUILD_ID,
+      options: [
+        {
+          name: "start",
+          type: CommandOptionType.STRING,
+          description: "The message to start the rescan from."
+        }
+      ]
+    })
+  }
 
-  async run(ctx) {
+  async run(ctx: CommandContext) {
     const channelId = ctx.channelID
     const result = await Channel.getChannel(channelId)
     if (result === null || result.lastListId === null) {
@@ -35,8 +35,9 @@ export class RescanCommand extends SlashCommand {
     }
     const list = await List.getList(result.lastListId)
     const channel = await DiscordUtility.getChannelFromId(channelId)
-    const startValue = ctx.data.options.options.filter((object) => object.name === "start")[0];
-    const start = startValue != undefined ? startValue : list.messageId;
+    const startValue = ctx.data.data.options.filter((object) => object.name === "start")[0].name;
+    // const startValue = ctx.data.options.options.filter((object) => object.name === "start")[0];
+    const start = startValue !== undefined ? startValue : list.messageId;
     // const messages = await channel.messages.fetch({ after: list.messageId })
     const messages = await channel.messages.fetch({ after: start })
     console.log(messages)
