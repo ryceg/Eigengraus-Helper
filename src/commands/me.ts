@@ -38,6 +38,6 @@ export class MeCommand extends SlashCommand {
     embed.addField("Most active channels", channels)
     await ((await DiscordUtility.getChannelFromId(
       ctx.channelID
-    )) as TextChannel).send(embed)
+    ))).send(embed)
   }
 }

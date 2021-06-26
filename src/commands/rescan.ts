@@ -64,7 +64,7 @@ export class RescanCommand extends SlashCommand {
         return
       }
       const dotIndex = m.indexOf(".")
-      const index: number = parseInt(m.substring(0, dotIndex))
+      const index = parseInt(m.substring(0, dotIndex))
       items[index - 1] = CONTENT_REGEX.exec(m)[0]
         .substr(index.toString().length - 1)
         .trim()

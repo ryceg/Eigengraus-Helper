@@ -32,7 +32,7 @@ declare global {
   var CLIENT: Client
 }
 
-;(async () => {
+; (async () => {
   global.CONNECTION = await createConnection({
     type: "postgres",
     host: "localhost",
@@ -121,7 +121,7 @@ client.on("message", async (message) => {
   await List.updateList(list)
   const dChannel = (await DiscordUtility.getChannelFromId(
     message.channel.id
-  )) as TextChannel
+  ))
   await (await dChannel.messages.fetch(list.messageId)).edit(
     list.generateEmbed()
   )
@@ -149,4 +149,4 @@ client.on("message", async (message) => {
 
 client.login(process.env.TOKEN)
 
-setInterval(() => {}, 60000)
+setInterval(() => { }, 60000)

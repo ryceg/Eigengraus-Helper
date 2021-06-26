@@ -136,7 +136,7 @@ export class List {
     await finishedChannel.send("A list has been finished!")
     const dChannel = (await DiscordUtility.getChannelFromId(
       channel.id
-    )) as TextChannel
+    ))
     await finishedChannel.send(list.generateEmbed(true))
 
     let content = `**${this.name}**\n\`\`\``
