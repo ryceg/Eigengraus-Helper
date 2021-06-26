@@ -3,8 +3,13 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "search.exclude": {
+    "**/node_modules": true,
+    "/yarn.lock": true,
+    "/package-lock.json": true
+  },
   "editor.formatOnSave": true,
   "prettier.semi": false,
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "twee3LanguageTools.storyformat.current": "sugarcube-2"
+  "highlight.maxMatches": 250
 }
