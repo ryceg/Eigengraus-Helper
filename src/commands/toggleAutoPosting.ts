@@ -1,5 +1,5 @@
 import { CommandContext, SlashCommand } from "slash-create"
-import { CommandOptionType } from "slash-create/lib/constants"
+import { CommandBooleanOption, CommandOptionType } from "slash-create/lib/constants"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"
 const { GUILD_ID } = require("../../config.json")
@@ -23,9 +23,13 @@ export class AutoPostingCommand extends SlashCommand {
 
   async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
-      ; (await Settings.getSettings()).autoPosting = ctx.data.data.options.filter(
-        (option) => option.name === "value"
-      )[0].value
+    const optionValue = ctx.data.data.options.find(
+      (option) => option.name === "value"
+    ) as CommandBooleanOption
+    const value = optionValue.value
+      ; (
+        await Settings.getSettings()
+      ).autoPosting = value
     return "Autoposting updated."
   }
 }

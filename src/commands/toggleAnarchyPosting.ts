@@ -1,5 +1,5 @@
 import { CommandContext, SlashCommand } from "slash-create"
-import { CommandOptionType } from "slash-create/lib/constants"
+import { CommandBooleanOption, CommandOptionType } from "slash-create/lib/constants"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"
 const { GUILD_ID } = require("../../config.json")
@@ -23,11 +23,14 @@ export class AnarchyPostingCommand extends SlashCommand {
 
   async run(ctx: CommandContext) {
     if (!(await DiscordUtility.isAdmin(ctx.member.roles))) return
+    const optionValue = ctx.data.data.options.find(
+      (option) => option.name === "value"
+    ) as CommandBooleanOption
+    const value = optionValue.value
       ; (
         await Settings.getSettings()
-      ).anarchyPosting = ctx.data.data.options.filter(
-        (option) => option.name === "value"
-      )[0].value
+      ).anarchyPosting = value
+
     return "Anarchy posting updated."
   }
 }
