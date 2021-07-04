@@ -20,7 +20,7 @@ export class CommandHandler {
       return
     }
 
-    const prefix: string = "!"
+    const prefix = "!"
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const command: string = args[0].toLowerCase()
