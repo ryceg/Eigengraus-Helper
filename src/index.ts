@@ -128,23 +128,6 @@ client.on("message", async (message) => {
 
   const member = await Member.getMember(message.author.id)
   await member.addPoints(list.bounty + POINTS_PER_ENTRY)
-
-  // if (list.isFinished()) {
-  //    list.finished = true;
-  //    await List.updateList(list);
-  //    const channel = await Channel.getChannel(message.channel.id);
-  //    channel.lastListId = null;
-  //    await Channel.updateChannel(channel);
-  //    const finishedChannel = await DiscordUtility.getChannelFromName("finished");
-  //    await finishedChannel.send("A list has been finished!");
-  //    await finishedChannel.send(list.generateEmbed(true));
-  //    if ((await Settings.getSettings()).autoPosting) {
-  //       await newList(message.channel.id);
-  //    } else {
-  //       await dChannel.send("The list has been finished. Get a new list by using /new");
-  //    }
-  //
-  // }
 })
 
 client.login(process.env.TOKEN)
