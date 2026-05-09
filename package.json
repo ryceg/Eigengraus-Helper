@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "yarn build && node scripts/check-commands.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryceg/Eigengrau-s-Helper.git"
@@ -22,7 +26,7 @@
     "eslint": "7.29",
     "pg": "8.6",
     "reflect-metadata": "^0.1.13",
-    "slash-create": "^3.2.3",
+    "slash-create": "^6.8.1",
     "typeorm": "^0.2.32"
   }
 }

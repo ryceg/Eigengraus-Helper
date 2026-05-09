@@ -1,5 +1,4 @@
 import { Channel, TextChannel, User } from "discord.js"
-import "../index"
 
 export class DiscordUtility {
   static async getUserFromId(id: string): Promise<User> {

@@ -3,7 +3,6 @@ import { MessageEmbed, TextChannel } from "discord.js"
 import { Channel } from "./Channel"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "./Settings"
-import { NewCommand } from "../commands/new"
 import { ListUtility } from "../utility/ListUtility"
 const {
   FINISHED_LISTS_CHANNEL,

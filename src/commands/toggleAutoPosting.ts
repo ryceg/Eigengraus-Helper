@@ -1,10 +1,9 @@
-import { CommandContext, SlashCommand } from "slash-create"
-import { CommandBooleanOption, CommandOptionType } from "slash-create/lib/constants"
+import { CommandBooleanOption, CommandContext, CommandOptionType, SlashCommand } from "slash-create"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"
 const { GUILD_ID } = require("../../config.json")
 
-export class AutoPostingCommand extends SlashCommand {
+export default class AutoPostingCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "autoposting",

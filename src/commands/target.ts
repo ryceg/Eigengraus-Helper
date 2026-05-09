@@ -7,7 +7,7 @@ import { DiscordUtility } from "../utility/DiscordUtility"
 import { ListUtility } from "../utility/ListUtility"
 const { GUILD_ID } = require("../../config.json")
 
-export class TargetCommand extends SlashCommand {
+export default class TargetCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "target",

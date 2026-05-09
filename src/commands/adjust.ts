@@ -1,11 +1,10 @@
-import { CommandContext, SlashCommand } from "slash-create"
-import { CommandOptionType, CommandStringOption } from "slash-create/lib/constants"
+import { CommandContext, CommandOptionType, CommandStringOption, SlashCommand } from "slash-create"
 import { DiscordUtility } from "../utility/DiscordUtility"
 import { Settings } from "../entity/Settings"
 import { Member } from "../entity/Member"
 const { GUILD_ID } = require("../../config.json")
 
-export class AnarchyPostingCommand extends SlashCommand {
+export default class AnarchyPostingCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "adjust",
