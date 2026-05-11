@@ -11,7 +11,7 @@ const newCommand = 'new'
 const customList = 'custom-list'
 const customTargetAmount = 'target-amount'
 
-export class NewCommand extends SlashCommand {
+export default class NewCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: newCommand,

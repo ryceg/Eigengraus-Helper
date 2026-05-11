@@ -8,7 +8,7 @@ import {
 import { AnyChannel } from "../entity/AnyChannel"
 const { GUILD_ID } = require("../../config.json")
 
-export class PointsRate extends SlashCommand {
+export default class PointsRate extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "points-rate",

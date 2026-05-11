@@ -1,11 +1,10 @@
 import { CommandContext, SlashCommand } from "slash-create"
-import { CommandOptionType } from "slash-create/lib/constants"
 import { Activity } from "../entity/Activity"
 import { MessageEmbed } from "discord.js"
 import { DiscordUtility } from "../utility/DiscordUtility"
 const { GUILD_ID } = require("../../config.json")
 
-export class TopCommand extends SlashCommand {
+export default class TopCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "top",

@@ -5,7 +5,7 @@ import { DiscordUtility } from "../utility/DiscordUtility"
 import { Member } from "../entity/Member"
 const { GUILD_ID } = require("../../config.json")
 
-export class MeCommand extends SlashCommand {
+export default class MeCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "stats",

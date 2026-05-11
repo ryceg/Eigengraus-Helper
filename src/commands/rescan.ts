@@ -11,7 +11,7 @@ const LIST_TITLE_CONTENT_REGEX = new RegExp("(?<=\\*\\*)(.*)(?=\\*\\*)")
 const LIST_INDEX_REGEX = new RegExp("^(.*)(?=\\.)")
 const CONTENT_REGEX = new RegExp("(?<=\\.)(.*)(?=$)", "s")
 
-export class RescanCommand extends SlashCommand {
+export default class RescanCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "rescan",

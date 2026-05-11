@@ -26,7 +26,7 @@ const commandOptionListTitle = 'list-title'
 const commandOptionListTitleDescription = "The title of the list."
 
 
-export class AddListCommand extends SlashCommand {
+export default class AddListCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "addlist",

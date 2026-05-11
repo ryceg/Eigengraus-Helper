@@ -52,9 +52,6 @@ const creator = new SlashCreator({
   publicKey: process.env.PUBLIC_KEY,
   token: process.env.TOKEN,
 })
-creator
-  .registerCommandsIn(path.join(__dirname, "commands"))
-  .syncCommands({ deleteCommands: false })
 creator.withServer(
   new GatewayServer((handler) =>
     client.ws.on(<WSEventType>"INTERACTION_CREATE", handler)
@@ -76,6 +73,11 @@ creator.on("commandRegister", (command) =>
 creator.on("commandError", (command, error) =>
   logger.error(`Command ${command.commandName}:`, error)
 )
+
+creator
+  .registerCommandsIn(path.join(__dirname, "commands"))
+  .then(() => creator.syncCommands({ deleteCommands: false }))
+  .catch((error) => logger.error("Failed to register slash commands:", error))
 
 client.on("ready", () => {
   console.log("Ready.")

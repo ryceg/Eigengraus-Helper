@@ -5,7 +5,7 @@ import { Channel } from "../entity/Channel";
 import { Settings } from "../entity/Settings";
 const { GUILD_ID } = require("../../config.json");
 
-export class FinishCommand extends SlashCommand {
+export default class FinishCommand extends SlashCommand {
   constructor(creator) {
     super(creator, {
       name: "finish",
